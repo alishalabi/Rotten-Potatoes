@@ -16,6 +16,26 @@ app.listen(3000, () => {
     console.log('App listening on port 3000!')
 })
 
+// function addGrade() {
+//   document.getElementById("dropdownGrade").classList.toggle("show");
+// }
+//
+// // Sample code from w3schools.com to add dropdown menu
+// // Will close dropdown window if you click outside window
+// onclick = function(event) {
+//   if (!event.target.matches('.dropbtn')) {
+//
+//     var dropdowns = document.getElementByClassName("dropdown-content");
+//     var i;
+//     for (i = 0; i <dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// }
+
 var exphbs = require('express-handlebars');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -41,15 +61,17 @@ app.get('/reviews/new', (req, res) => {
 app.post('/reviews', (req, res) => {
   Review.create(req.body).then((reviews) => {
       console.log(reviews);
-      res.redirect('/');
+      res.redirect('/reviews/${review._id}');
   }).catch((err) => {
     console.log(err.message);
   })
 })
 
-// This will create a mock array for us to test with
-// let reviews = [
-//   { title: "Outstanding Review Ali!! Good job" },
-//   { title: "Next Review" },
-//   { title: "Additional Review" }
-// ]
+//Action: Show
+app.get('/reviews/:id', (req, res) => {
+  Review.findById(req.params.id).then((review) => {
+    res.render('reviews-show', { review: review })
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})
