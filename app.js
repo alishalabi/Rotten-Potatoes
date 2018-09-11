@@ -1,19 +1,20 @@
+// import reviews from 'reviews';
 const bodyParser = require('body-parser');
 const express = require('express')
 const methodOverride = require('method-override')
 const app = express()
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const Review = mongoose.model('Review', {
-  title: String,
-  description: String,
-  movieTitle: String
-});
-
 app.use(methodOverride('_method'))
+
+const reviews = require('./controllers/reviews')(app)
+
+// Todo! const Review = require path to models and Reviews
+const Review = require('./models/review');
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
@@ -64,7 +65,7 @@ app.get('/reviews/new', (req, res) => {
 app.post('/reviews', (req, res) => {
   Review.create(req.body).then((reviews) => {
       console.log(reviews);
-      res.redirect('/reviews/${review._id}');
+      res.redirect(`/reviews/${reviews._id}`);
   }).catch((err) => {
     console.log(err.message);
   })
