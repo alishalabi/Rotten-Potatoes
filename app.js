@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'))
 
-const reviews = require('./controllers/reviews')(app)
+const reviews = require('./controllers/reviews.js')(app)
 
-// Todo! const Review = require path to models and Reviews
-const Review = require('./models/review');
+// Edited out - final steps of tutorial
+const Review = require('./models/review.js');
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')

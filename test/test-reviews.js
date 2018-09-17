@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../app');
 const should = chai.should();
-const Review = require('../models/review');
+const Review = require('../models/review.js');
 
 const sampleReview = {
   "title": "Super Sweet Review",
