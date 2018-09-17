@@ -108,4 +108,13 @@ app.delete('/reviews/:id', function (req, res) {
   })
 })
 
+// DELETE comment
+app.delete('/reviews/comments/:id', function (req, res) {
+  console.log("DELETE comment")
+  Comment.findByIdAndRemove(req.params.id).then((comment) => {
+    res.redirect(`/reviews/${comment.reviewId}`);
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})
 module.exports = app;
