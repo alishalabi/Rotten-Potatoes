@@ -1,0 +1,9 @@
+<h1>Now Playing</h1>
+{{#each movies}}
+  <h3>{{this.title}}</h3>
+  <p>
+    <a href="/movies/{{this.id}}">
+      <img src="{{base_url}}" />
+    </a>
+  </p>
+{{/each}}
