@@ -1,4 +1,3 @@
-
 // INITIALIZATION
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,9 +13,11 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 
+
 // ROUTES
-const reviews   = require('./controllers/reviews.js')(app)
-const comments  = require('./controllers/comments.js')(app)
+const reviews = require('./controllers/reviews.js')(app);
+const comments  = require('./controllers/comments.js')(app);
+const movies = require('./controllers/movies.js')(app);
 
 // SERVER
 app.listen(3000, () => {
