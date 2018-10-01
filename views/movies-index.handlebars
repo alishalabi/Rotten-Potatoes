@@ -2,7 +2,8 @@
 {{#each movies}}
   <h3>{{this.title}}</h3>
   <p>
-    <img src="https://image.tmdb.org/t/p/w1280/{{this.poster_path}}" width="250">
-    <h2><a href="/movies/{{this.id}}"></a></h2>
+    <a href="/movies/{{this.id}}">
+    <img src="https://image.tmdb.org/t/p/w1280/{{this.poster_path}}" width="250"></a>
+    <h6>{{this.overview}}</h6>
   </p>
 {{/each}}

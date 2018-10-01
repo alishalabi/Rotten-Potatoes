@@ -3,17 +3,17 @@ const Comment = require('../models/comment')
 
 module.exports = function (app) {
 
-  //Action: Index
-  app.get('/', (req, res) => {
-     // Review.find()
-     //  .then(reviews => {
-     //    res.render('reviews-index', { reviews: reviews });
-     //  })
-     //  .catch(err => {
-     //    console.log(err);
-     //  })
-    res.render('movies-index');
-  })
+  // //Action: Index
+  // app.get('/', (req, res) => {
+  // //    // Review.find()
+  // //    //  .then(reviews => {
+  // //    //    res.render('reviews-index', { reviews: reviews });
+  // //    //  })
+  // //    //  .catch(err => {
+  // //    //    console.log(err);
+  // //    //  })
+  //   res.render('movies-index');
+  // })
 
 
   // Action: New
